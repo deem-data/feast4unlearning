@@ -1,6 +1,6 @@
 [project]
 name = "feast"
-description = "Python SDK for Feast"
+description = "Python SDK for Feast, but tweaked to support unlearning"
 readme = "README.md"
 requires-python = ">=3.9.0"
 license = {file = "LICENSE"}
@@ -197,10 +197,10 @@ setuptools = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/feast-dev/feast"
+Homepage = "https://github.com/deem-data/feast4unlearning"
 
 [[project.authors]]
-name = "Feast"
+name = "Feast, but forked by DEEM"
 
 [project.scripts]
 feast = "feast.cli.cli:cli"

@@ -1239,6 +1239,18 @@ class FeatureStore:
         self._registry.apply_saved_dataset(dataset, self.project, commit=True)
         return dataset
 
+    def create_local_saved_dataset(
+            self,
+            dataset: pd.DataFrame,
+            name: str,
+    ):
+        dir_path = f"{self.repo_path}/data/saved_datasets"
+        dataset_path = f"{dir_path}/{name}.parquet"
+
+        # Store dataset
+        os.makedirs(dir_path, exist_ok=True)
+        dataset.to_parquet(dataset_path)
+
     def get_saved_dataset(self, name: str) -> SavedDataset:
         """
         Find a saved dataset in the registry by provided name and
@@ -1269,6 +1281,16 @@ class FeatureStore:
             config=self.config, dataset=dataset
         )
         return dataset.with_retrieval_job(retrieval_job)
+
+    def get_local_saved_dataset(self, name: str) -> pd.DataFrame | None:
+        dir_path = f"{self.repo_path}/data/saved_datasets"
+        dataset_path = f"{dir_path}/{name}.parquet"
+
+        # If file is there then return it, else return None
+        if os.path.isfile(dataset_path):
+            return pd.read_parquet(dataset_path)
+        else:
+            return None
 
     def materialize_incremental(
         self,

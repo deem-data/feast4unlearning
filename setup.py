@@ -23,10 +23,10 @@ from pathlib import Path
 
 from setuptools import find_packages, setup, Command
 
-NAME = "feast"
-DESCRIPTION = "Python SDK for Feast"
-URL = "https://github.com/feast-dev/feast"
-AUTHOR = "Feast"
+NAME = "feast4unlearning"
+DESCRIPTION = "Python SDK for Feast, but tweaked to support unlearning"
+URL = "https://github.com/deem-data/feast4unlearning"
+AUTHOR = "Feast, but forked by DEEM"
 REQUIRES_PYTHON = ">=3.9.0"
 
 REQUIRED = [
